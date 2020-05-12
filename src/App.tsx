@@ -6,7 +6,10 @@ interface RGB {
   green: number;
 }
 
-const SIZE = 8;
+const MAX = Math.pow(32, 3);
+const SIZE = 10;
+const COLUMNS = 600;
+const ROWS = MAX / COLUMNS;
 
 const Color: React.FC<RGB> = ({ red, green, blue }) => {
   const style = {
@@ -42,6 +45,7 @@ function App() {
 
   React.useEffect(() => {
     const c = getRgbValues();
+    console.log(c);
     setColors(c);
   }, []);
 
@@ -54,7 +58,7 @@ function App() {
         let y = 0;
 
         colors.forEach(({ red, green, blue }, i) => {
-          if (x >= 1024) {
+          if (x >= COLUMNS) {
             x = 0;
             y += SIZE;
           }
@@ -71,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <canvas ref={canvas} width="1024" height="1000" />
+      <canvas ref={canvas} width={ROWS * SIZE} height={COLUMNS * SIZE} />
     </div>
   );
 }
