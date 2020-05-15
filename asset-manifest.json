@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/colour-matrix/static/css/main.f2599380.chunk.css",
+    "main.js": "/colour-matrix/static/js/main.34e31646.chunk.js",
+    "main.js.map": "/colour-matrix/static/js/main.34e31646.chunk.js.map",
+    "runtime-main.js": "/colour-matrix/static/js/runtime-main.98871133.js",
+    "runtime-main.js.map": "/colour-matrix/static/js/runtime-main.98871133.js.map",
+    "static/js/2.e3ec0008.chunk.js": "/colour-matrix/static/js/2.e3ec0008.chunk.js",
+    "static/js/2.e3ec0008.chunk.js.map": "/colour-matrix/static/js/2.e3ec0008.chunk.js.map",
+    "index.html": "/colour-matrix/index.html",
+    "precache-manifest.34694d81537c9f86f5a51a6e07ccf001.js": "/colour-matrix/precache-manifest.34694d81537c9f86f5a51a6e07ccf001.js",
+    "service-worker.js": "/colour-matrix/service-worker.js",
+    "static/css/main.f2599380.chunk.css.map": "/colour-matrix/static/css/main.f2599380.chunk.css.map",
+    "static/js/2.e3ec0008.chunk.js.LICENSE.txt": "/colour-matrix/static/js/2.e3ec0008.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.98871133.js",
+    "static/js/2.e3ec0008.chunk.js",
+    "static/css/main.f2599380.chunk.css",
+    "static/js/main.34e31646.chunk.js"
+  ]
+}
