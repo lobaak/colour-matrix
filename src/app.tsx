@@ -2,12 +2,10 @@ import React from 'react';
 import Button from './components/button';
 import Canvas from './components/canvas';
 
-import { getRgbValues, rgbToHsl, sorter } from './utils/colors';
-import { Color } from './utils/types';
+import { getRgbValues, sortColors } from './utils/colors';
+import { Color, SortType } from './utils/types';
 
 import './styles/main.scss';
-
-type SortType = 'hue' | 'sat' | 'lightness';
 
 function App() {
   const [colors, setColors] = React.useState<Color[]>([]);
@@ -16,27 +14,13 @@ function App() {
     initColors();
   }, []);
 
+  function handleSort(type: SortType) {
+    const tempColors = sortColors(type, colors);
+    setColors(tempColors);
+  }
+
   function initColors() {
     setColors(getRgbValues());
-  }
-
-  function shuffleSort() {
-    const tempColors = [...colors].sort(sorter.shuffle);
-    setColors(tempColors);
-  }
-
-  function luminanceSort() {
-    const tempColors = [...colors].sort(sorter.luminance);
-    setColors(tempColors);
-  }
-
-  function hslSort(sortType: SortType = 'hue') {
-    const tempColors = colors
-      .map((c, i) => ({ color: rgbToHsl(c), i })) // track index for after sort
-      .sort(sorter[sortType])
-      .map((c) => colors[c.i]);
-
-    setColors(tempColors);
   }
 
   if (!colors.length) {
@@ -51,14 +35,13 @@ function App() {
         itemsPerColumn={128}
         itemsPerRow={256}
       />
-
-      <h2>Sort color values</h2>
-      <Button onClick={initColors}>Reset</Button>
-      <Button onClick={() => shuffleSort()}>Shuffle</Button>
-      <Button onClick={() => luminanceSort()}>Luminance</Button>
-      <Button onClick={() => hslSort('hue')}>Hue</Button>
-      <Button onClick={() => hslSort('sat')}>Sat</Button>
-      <Button onClick={() => hslSort('lightness')}>Lightness</Button>
+      <h2>Sort colours</h2>
+      <Button onClick={() => initColors()}>Reset</Button>
+      <Button onClick={() => handleSort('shuffle')}>Shuffle</Button>
+      <Button onClick={() => handleSort('luminance')}>Luminance</Button>
+      <Button onClick={() => handleSort('hue')}>Hue</Button>
+      <Button onClick={() => handleSort('sat')}>Sat</Button>
+      <Button onClick={() => handleSort('lightness')}>Lightness</Button>
     </>
   );
 }
